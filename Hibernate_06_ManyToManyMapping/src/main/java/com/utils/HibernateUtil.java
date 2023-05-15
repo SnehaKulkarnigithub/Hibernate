@@ -6,9 +6,10 @@ import java.util.Properties;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
 import com.entity.Authors;
 import com.entity.Books;
+import com.entity.Employees;
+import com.entity.Projects;
 import com.entity.ReaderEntity;
 import com.entity.SubscriptionEntity;
 
@@ -34,6 +35,8 @@ public class HibernateUtil {
 				//configuration.addAnnotatedClass(SubscriptionEntity.class);
 				configuration.addAnnotatedClass(Authors.class);
 				configuration.addAnnotatedClass(Books.class);
+				//configuration.addAnnotatedClass(Employees.class);
+				//configuration.addAnnotatedClass(Projects.class);
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);

@@ -1,7 +1,7 @@
 package com.entity;
 
-import java.io.Serializable;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,22 +26,19 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "Authors")
-public class Authors implements Serializable {
-
+@Table
+public class Employees {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer authid;
-	private String authname;
-	private String city;
+	private Integer empid;
+	private String empname;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "AUTHORS_BOOKS", 
+	@JoinTable(name = "EMPLOYEE_PROJECT", 
 	joinColumns = 
-	{@JoinColumn(referencedColumnName = "authid")}, 
+	{@JoinColumn(referencedColumnName = "empid")}, 
 	inverseJoinColumns = 
-	{@JoinColumn(referencedColumnName = "bookid")})
-	
-	private Set<Books> books;
+	{@JoinColumn(referencedColumnName = "pid")})
+	private Set<Projects> projects;
 
 }
